@@ -27,8 +27,8 @@ app = Flask(__name__)  # __name__ helps Flask locate resources and configuration
 
 client = elasticapm.Client(
     service_name='Monothor-be-test',
-    server_url = 'https://my-observability-project-e6edbe.apm.us-west-2.aws.elastic.cloud:443',
-    api_key = 'U0tEeUhwVUJlSE1jVHBmNEJZd1c6XzFONXl6S0tnSWRiblJWVjlYalBFQQ==',
+    server_url = 'https://my-observability-project-bbb56a.apm.us-west-2.aws.elastic.cloud:443',
+    api_key = 'RmY0Q0NaVUJLaTZSRzdmcEpuU0c6REhuQnp4M3poRDZHSHZlRGxHdHo5Zw==',
     environment = 'Test',
     transactions_sample_rate = 1.0,
     debug = True
@@ -220,19 +220,15 @@ def add_from_file(filename,username, apm_context=None):
 @app.route('/BEcheck')
 @utils.measure_this
 def check_livness():
-    try:
-        client.begin_transaction("check_livness_transaction")    
-        apm_context = traces.execution_context.get_transaction()
-        data = request.get_json()
-        username = data.get('username')
-        if user.is_user_exist(username)['message']!="User exist" :
-            return "User does not exist"             
-        runInfo=check_liveness.livness_check (username, apm_context, client=client)            
-        client.end_transaction("check_livness_transaction", "success")
-        return runInfo
-    except:
-        client.end_transaction("check_livness_transaction", "error")
-        return runInfo
+    client.begin_transaction("check_livness_transaction")    
+    apm_context = traces.execution_context.get_transaction()
+    data = request.get_json()
+    username = data.get('username')
+    if user.is_user_exist(username)['message']!="User exist" :
+       return "User does not exist"             
+    runInfo=check_liveness.livness_check (username, apm_context, client=client)            
+    client.end_transaction("check_livness_transaction", "success")
+    return runInfo
     
 
 def asd_span_function(apm_context=None):
