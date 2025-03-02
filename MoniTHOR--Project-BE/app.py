@@ -18,7 +18,7 @@ app = Flask(__name__)  # __name__ helps Flask locate resources and configuration
 
 # app.config['ELASTIC_APM'] = {
 #   'SERVICE_NAME': 'Monothor-be',
-#   'API_KEY': 'RmY0Q0NaVUJLaTZSRzdmcEpuU0c6REhuQnp4M3poRDZHSHZlRGxHdHo5Zw==',
+#   'API_KEY': '',
 #   'SERVER_URL': 'https://my-observability-project-bbb56a.apm.us-west-2.aws.elastic.cloud:443',
 #   'ENVIRONMENT': 'Test',
 #   'TRANSACTIONS_SAMPLE_RATE': 1.0,
@@ -28,7 +28,7 @@ app = Flask(__name__)  # __name__ helps Flask locate resources and configuration
 client = elasticapm.Client(
     service_name='Monothor-be-test',
     server_url = 'https://my-observability-project-bbb56a.apm.us-west-2.aws.elastic.cloud:443',
-    api_key = 'RmY0Q0NaVUJLaTZSRzdmcEpuU0c6REhuQnp4M3poRDZHSHZlRGxHdHo5Zw==',
+    api_key = '',
     environment = 'Test',
     transactions_sample_rate = 1.0,
     debug = True

@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 app.config['ELASTIC_APM'] = {
   'SERVICE_NAME': 'Monothor-Fe',
-  'API_KEY': 'RmY0Q0NaVUJLaTZSRzdmcEpuU0c6REhuQnp4M3poRDZHSHZlRGxHdHo5Zw==',
+  'API_KEY': '',
   'SERVER_URL': 'https://my-observability-project-bbb56a.apm.us-west-2.aws.elastic.cloud:443',
   'ENVIRONMENT': 'Test',
   'TRANSACTIONS_SAMPLE_RATE': 1.0,
